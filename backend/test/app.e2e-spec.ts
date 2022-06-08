@@ -58,6 +58,15 @@ describe('App e2e', () => {
       it('Should login', () => {
         return pactum.spec().post(`/auth/login`).withBody(correctDto).expectStatus(200)
       })
+      it('Should NOT login / incorrect email', () => {
+        return pactum.spec().post(`/auth/login`).withBody(incorrectDtoEmail).expectStatus(400)
+      })
+      it('Should NOT login / incorrect pass', () => {
+        return pactum.spec().post(`/auth/login`).withBody(incorrectDtoPass).expectStatus(400)
+      })
+      it('Should NOT login / incorrect all', () => {
+        return pactum.spec().post(`/auth/login`).withBody(incorrectDtoPass).expectStatus(400)
+      })
     })
   })
 
