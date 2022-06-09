@@ -11,6 +11,8 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - run: echo 'Test config'
+      - name: Backend e2e Tests
+        run: npm run test:e2e --prefix backend
       - name: Install modules
         run: npm install --prefix backend
       - name: Build
