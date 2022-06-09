@@ -12,6 +12,6 @@ jobs:
       - run: bats -v
       - run: echo 'Test config'
       - name: Install modules
-        run: npm install
+        run: npm install --prefix backend
       - name: Build
         run: npm run build
