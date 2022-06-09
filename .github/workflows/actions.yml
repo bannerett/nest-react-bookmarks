@@ -1,0 +1,17 @@
+name: actions
+on: [push]
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm install -g bats
+      - run: bats -v
+      - run: echo 'Test config'
+      - name: Install modules
+        run: npm install --prefix backend
+      - name: Build
+        run: npm run build --prefix backend
