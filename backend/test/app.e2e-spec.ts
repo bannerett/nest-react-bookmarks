@@ -10,9 +10,7 @@ describe('App e2e', () => {
   let prisma: PrismaService
 
   beforeAll(async () => {
-    const moduleRef = await Test.createTestingModule({
-      imports: [AppModule],
-    }).compile()
+    const moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile()
 
     app = moduleRef.createNestApplication()
     app.useGlobalPipes(
@@ -55,9 +53,6 @@ describe('App e2e', () => {
     })
 
     describe('Login', () => {
-      it('Should login', () => {
-        return pactum.spec().post(`/auth/login`).withBody(correctDto).expectStatus(200)
-      })
       it('Should NOT login / incorrect email', () => {
         return pactum.spec().post(`/auth/login`).withBody(incorrectDtoEmail).expectStatus(400)
       })
@@ -67,11 +62,18 @@ describe('App e2e', () => {
       it('Should NOT login / incorrect all', () => {
         return pactum.spec().post(`/auth/login`).withBody(incorrectDtoPass).expectStatus(400)
       })
+      it('Should login', () => {
+        return pactum.spec().post(`/auth/login`).withBody(correctDto).expectStatus(200).stores('access_token', 'access_token')
+      })
     })
   })
 
   describe('User', () => {
-    describe('Get me', () => {})
+    describe('Get me', () => {
+      it('should get current user', () => {
+        return pactum.spec().get('/users/me').withHeaders({ Authorization: `Bearer $S{access_token}` }).expectStatus(200)
+      })
+    })
 
     describe('Edit user', () => {})
   })
