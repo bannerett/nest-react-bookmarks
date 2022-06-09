@@ -1,5 +1,9 @@
 name: actions
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
   init:
     runs-on: ubuntu-latest
@@ -11,7 +15,12 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - run: echo 'Test config'
+
       - name: Install modules
         run: npm install --prefix backend
+
+      - name: Backend e2e Tests
+        run: npm run test:e2e --prefix backend
+
       - name: Build
         run: npm run build --prefix backend
