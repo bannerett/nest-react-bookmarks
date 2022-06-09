@@ -73,6 +73,9 @@ describe('App e2e', () => {
       it('should get current user', () => {
         return pactum.spec().get('/users/me').withHeaders({ Authorization: `Bearer $S{access_token}` }).expectStatus(200)
       })
+      it('Intentional error test', () => {
+        return pactum.spec().get('/users/me').withHeaders({ Authorization: `Bearer $S{token}` }).expectStatus(200)
+      })
     })
 
     describe('Edit user', () => {})
