@@ -13,5 +13,5 @@ jobs:
       - run: echo 'Test config'
 #      - name: Install modules
 #      - run: npm install
-      - name: Build
+      - uses: Build
       - run: npm run build
