@@ -14,4 +14,4 @@ jobs:
       - name: Install modules
         run: npm install --prefix backend
       - name: Build
-        run: npm run build
+        run: npm run build --prefix backend
