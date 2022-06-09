@@ -1,7 +1,7 @@
 name: actions
 on: [push]
 jobs:
-  check-bats-version:
+  init:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -11,3 +11,7 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - run: echo 'Test config'
+      - name: Install modules
+        run: npm install --prefix backend
+      - name: Build
+        run: npm run build --prefix backend
