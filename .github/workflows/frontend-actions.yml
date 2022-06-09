@@ -1,0 +1,26 @@
+name: frontend-actions
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm install -g bats
+      - run: bats -v
+      - run: echo 'Test config'
+
+      - name: Install modules
+        run: npm install --prefix frontend
+
+      - name: Backend Jest Tests
+        run: npm run test --prefix frontend
+
+      - name: Build
+        run: npm run build --prefix frontend
