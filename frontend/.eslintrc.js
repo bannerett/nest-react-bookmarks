@@ -124,7 +124,7 @@ module.exports = {
     'function-paren-newline': ['warn', 'consistent'],
     'object-curly-newline': ['warn', { multiline: true }],
     'no-debugger': 'off',
-    'no-restricted-imports': ['warn', { patterns: ['lodash/*', '_', '*../*'] }],
+    'no-restricted-imports': ['warn', { patterns: ['lodash/*', '_'] }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
   }
