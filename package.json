@@ -1,0 +1,33 @@
+{
+  "name": "nest-react-bookmarks",
+  "version": "1.0.0",
+  "description": "Bookmarks app with Nest.js & Prisma on backend and React.js on frontend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently cross-env NODE_ENV=production \"npm run backend:dev --prefix backend\" \"npm run start --prefix frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bannerett/nest-react-bookmarks.git"
+  },
+  "keywords": [
+    "nest",
+    "react",
+    "bookmarks",
+    "app",
+    "fullstack"
+  ],
+  "author": "Ivan Vasyliev <im.vasyliev87@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bannerett/nest-react-bookmarks/issues"
+  },
+  "homepage": "https://github.com/bannerett/nest-react-bookmarks#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
+}
