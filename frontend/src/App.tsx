@@ -6,6 +6,6 @@ import './assets/styles/styles.scss'
 export const App: FC = () => (
   <React.Fragment>
     <CssBaseline />
-    <div>mui</div>
+    <div className="app">mui</div>
   </React.Fragment>
 )
